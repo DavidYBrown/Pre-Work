@@ -2,12 +2,11 @@
 function isAnagram(test, original) {
     for (let i = 0; i < test.length; i++){
         let regex = `/[^${test[i].toLowerCase()}]/g`;
-        if (test.toLowerCase().replace(regex, "").length === original.toLowerCase().replace(regex, "").length){
-            return true;
-        } else {
+        if (test.toLowerCase().replace(regex, "").length !== original.toLowerCase().replace(regex, "").length){
             return false;
         }
     }
+    return true;
 }
 
 console.log(isAnagram("foefet", "toffee")); // true
