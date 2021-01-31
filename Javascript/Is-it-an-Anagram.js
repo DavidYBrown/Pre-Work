@@ -1,8 +1,10 @@
 // Function to check if two strings contain the same charachters
 function isAnagram(test, original) {
     for (let i = 0; i < test.length; i++){
-        let regex = `/[^${test[i].toLowerCase()}]/g`;
-        if (test.toLowerCase().replace(regex, "").length !== original.toLowerCase().replace(regex, "").length){
+        let regex = new RegExp(test[i].toLowerCase(), 'g');
+        if (original.toLowerCase().match(regex) === null || test.length !== original.length){
+            return false;
+        } else if (test.toLowerCase().match(regex).length !== original.toLowerCase().match(regex).length){
             return false;
         }
     }
